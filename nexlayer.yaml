@@ -1,0 +1,17 @@
+application:
+  name: kanboard
+  pods:
+  - name: app
+    image: kanboard/kanboard:latest
+    path: /
+    servicePorts:
+    - 80
+    vars:
+      DATABASE_URL: "sqlite:///var/www/app/data/db.sqlite"
+    volumes:
+    - name: kanboard-data
+      mountPath: /var/www/app/data
+      size: 5Gi
+    - name: kanboard-plugins
+      mountPath: /var/www/app/plugins
+      size: 2Gi
